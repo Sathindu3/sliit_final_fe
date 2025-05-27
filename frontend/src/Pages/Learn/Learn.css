@@ -1,0 +1,116 @@
+.pg_learn {
+    overflow: hidden;
+    background: linear-gradient(#000000, #3E6D93);
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.pg_learn .content-1 {
+    padding: 150px 15px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pg_learn h2,
+.pg_learn p,
+.pg_learn h3 {
+    color: white;
+}
+
+.category-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    border: 2px solid #ffffff44;
+    background: transparent;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #ffffff33;
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.search-input {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.pg_learn .content-2 .sub-1 {
+    display: flex;
+    margin-bottom: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.pg_learn .content-2 .sub-1:hover {
+    transform: scale(1.02);
+}
+
+.pg_learn .content-2 .sub-1 img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px 0 0 12px;
+}
+
+.pg_learn .content-2 .sub-1 .box-1 {
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pg_learn .content-2 .sub-1 .box-1 a {
+    margin-top: 10px;
+    color: #00bfff;
+    text-decoration: underline;
+}
+
+.pg_learn .comet1 {
+    width: 150px;
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    animation: move-comet 25s linear infinite;
+    opacity: 0.4;
+}
+
+@keyframes move-comet {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(150vw, 100vh);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}

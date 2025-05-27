@@ -1,0 +1,265 @@
+.pg_home {
+    overflow: hidden;
+    background: linear-gradient(#000000, #3E6D93);
+    min-height: 100vh;
+}
+
+/* .pg_home .content-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+@keyframes move-comet {
+    0% {
+        top: 0%;
+        left: 0%;
+
+    }
+
+    25% {
+        top: 25%;
+        left: 25%;
+
+    }
+
+    50% {
+        top: 50%;
+        left: 50%;
+    }
+
+    75% {
+        top: 75%;
+        left: 75%;
+
+    }
+
+    100% {
+        top: 100%;
+        left: 100%;
+
+    }
+}
+
+.pg_home .content-1 {
+    min-height: 100vh;
+}
+
+.pg_home .comet1 {
+    width: 250px;
+    position: absolute;
+    top: 0px;
+    animation: move-comet 20s linear;
+}
+
+.pg_home .content-1 image {
+    width: 300px;
+
+}
+
+.pg_home .content-1 .carousel-item img {
+    width: 400px;
+}
+
+.pg_home .content-2 .sub-1::before {
+    content: '';
+    width: 6px;
+    height: 60%;
+    background-color: #FFED00;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+}
+
+.pg_home .content-2 .sub-1::after {
+    content: '';
+    width: 6px;
+    height: 60%;
+    background-color: #FFED00;
+    position: absolute;
+    right: 35%;
+    top: 15%;
+}
+
+.pg_home .content-2 ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: #14445E;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 0px 0px 50px 50px;
+    margin-top: -90px;
+    position: relative;
+    z-index: 12;
+}
+
+.pg_home .content-2 ul h5 {
+    color: #34C8FF;
+    font-size: 60px;
+    font-family: 'poppins';
+    font-weight: 400;
+}
+
+.pg_home .content-2 ul p {
+    color: #ffffff;
+    font-size: 25px;
+    font-family: 'poppins';
+    font-weight: 400;
+}
+
+.pg_home .content-2 ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.pg_home .content-3 {
+    background: url('../../Resources/Images/bg1.png');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pg_home .content-3 h3 {
+    color: white;
+    font-size: 50px;
+}
+
+.carousel-caption h3 {
+    color: white;
+    font-size: 50px;
+}
+
+.carousel-caption p {
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+.carousel-caption .button_try {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border: 2px solid white;
+    padding: 20px 50px;
+    margin-top: 30px;
+}
+
+.carousel-indicators {
+    bottom: -50px !important;
+    display: none !important;
+}
+
+.carousel-control-prev {
+    top: 100% !important;
+    left: 35% !important;
+}
+
+.carousel-control-next {
+    top: 100% !important;
+    right: 35% !important;
+}
+
+.pg_home .content-1 .sub-2 {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pg_home .content-1 .sub-2 h3 {
+    color: white;
+}
+
+.pg_home .content-1 .sub-2 .store-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pg_home .content-1 .sub-2 .store-links a:hover {
+    scale: 1.2;
+    transition: 1.2s;
+}
+.pg_home .content-1 .sub-2 .store-links img {
+    width: 300px;
+}
+
+
+
+
+/* Animated Star Background (Optional)
+.pg_home::before {
+    content: '';
+    background: url('../../Resources/Images/stars.png') repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: scrollStars 60s linear infinite;
+    z-index: 0;
+    opacity: 0.2;
+} */
+
+@keyframes scrollStars {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 10000px; }
+}
+
+/* Zoom and Fade Animations */
+@keyframes zoomIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.zoom-in {
+    animation: zoomIn 1.5s ease forwards;
+}
+.fade-in {
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Button style for pattern tool */
+.pattern-button {
+    margin-top: 30px;
+    text-decoration: none;
+    padding: 15px 40px;
+    border: 2px solid white;
+    color: white;
+    font-size: 18px;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+.pattern-button:hover {
+    background-color: #34C8FF;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Glowing CountUp effect */
+.pg_home .content-2 ul h5 {
+    color: #34C8FF;
+    font-size: 60px;
+    font-family: 'poppins';
+    font-weight: 400;
+    text-shadow: 0 0 15px #34C8FF;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #34C8FF;
+    }
+    to {
+        text-shadow: 0 0 20px #34C8FF, 0 0 30px #34C8FF;
+    }
+}
