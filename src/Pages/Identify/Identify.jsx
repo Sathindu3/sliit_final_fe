@@ -5,26 +5,23 @@ import pattern from '../../Resources/Images/pattern.png';
 
 function Identify() {
     const [image, setImage] = useState(null);
-    const [file, setFile] = useState(null); // store the file for sending
     const [result, setResult] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleImageUpload = (event) => {
-        const uploadedFile = event.target.files[0];
-        if (uploadedFile) {
-            setFile(uploadedFile);
-            setImage(URL.createObjectURL(uploadedFile));
-            sendToBackend(uploadedFile);
+        const file = event.target.files[0];
+        if (file) {
+            setImage(URL.createObjectURL(file));
+            processImage(file);
         }
     };
 
     const handleDrop = (e) => {
         e.preventDefault();
-        const droppedFile = e.dataTransfer.files[0];
-        if (droppedFile) {
-            setFile(droppedFile);
-            setImage(URL.createObjectURL(droppedFile));
-            sendToBackend(droppedFile);
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            setImage(URL.createObjectURL(file));
+            processImage(file);
         }
     };
 
@@ -32,30 +29,36 @@ function Identify() {
         e.preventDefault();
     };
 
-    const sendToBackend = async (file) => {
+    const processImage = async (file) => {
         setLoading(true);
         setResult('');
 
-        try {
-            const formData = new FormData();
-            formData.append('file', file);
+        const formData = new FormData();
+        formData.append('Image', file);
 
-            const response = await fetch('https://your-api.com/api/detection/predict', {
+        try {
+            const response = await fetch('http://localhost:5257/api/Detection/detect', {
                 method: 'POST',
                 body: formData
             });
 
             if (!response.ok) {
-                throw new Error('Server error: ' + response.statusText);
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
             const data = await response.json();
-            
-            // You can adjust how you parse the Roboflow response
-            setResult(JSON.stringify(data, null, 2));
+            console.log('Backend response:', data);
+
+            if (data.success) {
+                setResult(
+                    `Detected: ${data.labels.join(', ')}\nConfidence: ${data.confidenceScores.join(', ')}`
+                );
+            } else {
+                setResult('No objects detected.');
+            }
         } catch (error) {
-            console.error(error);
-            setResult('❌ Failed to analyze image.');
+            console.error('Error:', error);
+            setResult(`❌ Error: ${error.message}`);
         } finally {
             setLoading(false);
         }
@@ -64,7 +67,6 @@ function Identify() {
     return (
         <div className="pg_capture">
             <div className="row">
-                {/* Header */}
                 <div className="col-12 content-1">
                     <h2>No telescope? Grab your smartphone!</h2>
                     <p>
@@ -73,7 +75,6 @@ function Identify() {
                     </p>
                 </div>
 
-                {/* Phone Ratings */}
                 <div className="col-12 content-2">
                     <div className="sub-1">
                         {[12, 13, 14, 15, 16].map((version, index) => (
@@ -88,7 +89,6 @@ function Identify() {
                     </div>
                 </div>
 
-                {/* Image Upload & AI Analysis */}
                 <div className="col-12 content-3">
                     <h2>🛰️ Capture & Analyze</h2>
                     <p>Upload or drag & drop your sky image to analyze with AI.</p>

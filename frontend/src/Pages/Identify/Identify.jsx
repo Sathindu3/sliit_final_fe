@@ -12,7 +12,7 @@ function Identify() {
         const file = event.target.files[0];
         if (file) {
             setImage(URL.createObjectURL(file));
-            simulateAIProcessing(file);
+            processImage(file);
         }
     };
 
@@ -21,7 +21,7 @@ function Identify() {
         const file = e.dataTransfer.files[0];
         if (file) {
             setImage(URL.createObjectURL(file));
-            simulateAIProcessing(file);
+            processImage(file);
         }
     };
 
@@ -29,19 +29,44 @@ function Identify() {
         e.preventDefault();
     };
 
-    const simulateAIProcessing = (file) => {
+    const processImage = async (file) => {
         setLoading(true);
         setResult('');
-        setTimeout(() => {
-            setResult('🔭 Identified: Orion constellation, Mars, Andromeda Galaxy.');
+
+        const formData = new FormData();
+        formData.append('Image', file);
+
+        try {
+            const response = await fetch('http://localhost:5257/api/Detection/detect', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Backend response:', data);
+
+            if (data.success) {
+                setResult(
+                    `Detected: ${data.labels.join(', ')}\nConfidence: ${data.confidenceScores.join(', ')}`
+                );
+            } else {
+                setResult('No objects detected.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setResult(`❌ Error: ${error.message}`);
+        } finally {
             setLoading(false);
-        }, 3000);
+        }
     };
 
     return (
         <div className="pg_capture">
             <div className="row">
-                {/* Header */}
                 <div className="col-12 content-1">
                     <h2>No telescope? Grab your smartphone!</h2>
                     <p>
@@ -50,7 +75,6 @@ function Identify() {
                     </p>
                 </div>
 
-                {/* Phone Ratings */}
                 <div className="col-12 content-2">
                     <div className="sub-1">
                         {[12, 13, 14, 15, 16].map((version, index) => (
@@ -65,7 +89,6 @@ function Identify() {
                     </div>
                 </div>
 
-                {/* Image Upload & AI Analysis */}
                 <div className="col-12 content-3">
                     <h2>🛰️ Capture & Analyze</h2>
                     <p>Upload or drag & drop your sky image to analyze with AI.</p>
@@ -91,7 +114,7 @@ function Identify() {
                     {result && (
                         <div className="result">
                             <h4>🧪 AI Results</h4>
-                            <p>{result}</p>
+                            <pre>{result}</pre>
                         </div>
                     )}
                 </div>
