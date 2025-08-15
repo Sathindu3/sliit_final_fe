@@ -1,0 +1,80 @@
+.pg_help {
+    overflow: hidden;
+    background: linear-gradient(#000000, #3E6D93);
+    min-height: 100vh;
+    padding: 50px 0;
+}
+
+.pg_help .content-1 {
+    padding: 50px 15px;
+    text-align: center;
+    color: white;
+}
+
+.pg_help .content-1 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.pg_help .content-3 {
+    padding: 30px 15px;
+}
+
+.pg_help .steps-heading {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.step {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.step:hover {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.step img {
+    margin-top: 15px;
+    max-height: 300px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.step h5 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 1rem;
+}
+
+/* Optional comet animation - currently unused */
+@keyframes move-comet {
+    0%   { top: 0%; left: 0%; }
+    25%  { top: 25%; left: 25%; }
+    50%  { top: 50%; left: 50%; }
+    75%  { top: 75%; left: 75%; }
+    100% { top: 100%; left: 100%; }
+}
+
+.pg_help .comet1 {
+    width: 250px;
+    position: absolute;
+    top: 0px;
+    animation: move-comet 20s linear;
+}

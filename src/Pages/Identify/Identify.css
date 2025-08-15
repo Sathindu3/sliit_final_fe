@@ -1,0 +1,128 @@
+.pg_capture {
+    background: linear-gradient(#000000, #3E6D93);
+    color: white;
+    min-height: 100vh;
+    padding: 60px 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Section Titles */
+.pg_capture .content-1,
+.pg_capture .content-3 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pg_capture .content-1 h2,
+.pg_capture .content-1 p,
+.pg_capture .content-3 h2,
+.pg_capture .content-3 p {
+    color: white;
+    margin: 10px 0;
+}
+
+/* Phone Ratings */
+.pg_capture .content-2 .sub-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.pg_capture .content-2 .box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #fff2;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 200px;
+}
+
+.pg_capture .content-2 .box img {
+    width: 60px;
+    height: auto;
+}
+
+.pg_capture .content-2 .box .description h5 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.pg_capture .content-2 .box .description p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Drop Area */
+.drop-area {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px dashed white;
+    padding: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.drop-area input {
+    margin-top: 10px;
+}
+
+/* Image Preview */
+.preview {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.preview img {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 1px solid #fff3;
+}
+
+/* Result & Loading */
+.loading,
+.result {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.result h4 {
+    margin-bottom: 10px;
+}
+
+/* Pattern Image */
+.pattern_image {
+    width: 100%;
+    max-width: 350px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+}
+
+/* Animation (optional comet for extra flavor) */
+@keyframes move-comet {
+    0% { top: 0%; left: 0%; }
+    25% { top: 25%; left: 25%; }
+    50% { top: 50%; left: 50%; }
+    75% { top: 75%; left: 75%; }
+    100% { top: 100%; left: 100%; }
+}
+
+.pg_capture .comet1 {
+    width: 250px;
+    position: absolute;
+    top: 0px;
+    animation: move-comet 20s linear infinite;
+}
