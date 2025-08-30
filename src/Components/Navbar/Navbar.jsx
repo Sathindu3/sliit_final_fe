@@ -18,13 +18,13 @@ function Navigation() {
                 <div className="row">
                     <Navbar collapseOnSelect expand="lg" >
                         <Container className='nav-container'>
-                            <div className="col-lg-2 col-xs-12  content-1">
-                                <Navbar.Brand href="/">
-                                    {/* <img src={Logo} alt="" /> */}
-                                </Navbar.Brand>
-                            </div>
+
                             <div className="col-lg-12 col-xs-12  content-1">
-                                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                                <div className="menu-header">
+                                    <h3>Menu</h3>
+                                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+                                </div>
                                 <Navbar.Collapse id="responsive-navbar-nav">
                                     <Nav className="me-auto">
                                         <Nav.Link as={Link} to="/" className='navlink'>Home</Nav.Link>

@@ -50,9 +50,23 @@ function Identify() {
             console.log('Backend response:', data);
 
             if (data.success) {
-                setResult(
-                    `Detected: ${data.labels.join(', ')}\nConfidence: ${data.confidenceScores.join(', ')}`
-                );
+                // Parse the nested JSON string from backend
+                const parsedData = JSON.parse(data.data);
+
+                // Extract outputs safely
+                const outputs = parsedData.outputs || [];
+
+                if (outputs.length > 0) {
+                    // Example: extracting labels and confidence if available
+                    const labels = outputs[0].classification_predictions?.map(p => p.label) || [];
+                    const confidenceScores = outputs[0].classification_predictions?.map(p => p.confidence) || [];
+
+                    setResult(
+                        `Detected: ${labels.join(', ') || 'N/A'}\nConfidence: ${confidenceScores.join(', ') || 'N/A'}`
+                    );
+                } else {
+                    setResult('No objects detected.');
+                }
             } else {
                 setResult('No objects detected.');
             }
